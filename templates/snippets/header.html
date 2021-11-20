@@ -1,0 +1,183 @@
+{% load static %}
+<link href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.1/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-+0n0xVW2eSR5OomGNYDnhzAbDsOXxcvSN1TPprVMTNDbiYZCxYbOOl7+AMvyTG2x" crossorigin="anonymous">
+<style type="text/css">
+	body {
+  background-image: linear-gradient(180deg, #eee, #fff 100px, #fff);
+}
+
+.container {
+  max-width: 960px;
+}
+
+.pricing-header {
+  max-width: 700px;
+}
+
+.bordering{
+  border: solid 2px black;
+}
+
+.myimage {
+    display:block;
+    margin-left: auto;
+    margin-right: auto;
+  }
+
+.margin_style{
+  margin-left: 30px;  
+  margin-right: 30px;
+
+}
+.margin-right{
+  margin-left:100px;
+  margin-right:300px;
+}
+
+.navbar {
+    position: relative;
+}
+.brand {
+    position: absolute;
+    left: 50%;
+    margin-left: -50px !important;  /* 50% of your logo width */
+    display: block;
+}
+
+.search-bar{
+  max-width:500px;
+  width:100%;
+  float: right !important;
+}
+
+  .full-size{
+  height:100%;
+  width:100%;
+  overflow:hidden; 
+
+}
+
+.font_style{
+  font-family: "Lucida Console", "Courier New", monospace;
+  font-weight: bold;
+  font-style: italic;
+  color: steelblue;
+}
+.create_post_styling{
+  font-family: Arial, Helvetica, sans-serif;
+  font-style: italic;
+  color: indianred;
+
+}
+
+.statement{
+  background-color: maroon;
+  color: white;
+  font-family: 'Comic Sans MS';
+  float: center;
+  font-weight: bold;
+  border-radius: 5px;
+
+}
+
+.top-bar{
+  font-weight: bold;
+}
+
+.hello{
+  background-color: lightyellow;
+  color: maroon;
+  padding-left: 5px;
+  padding-right: 5px;
+  margin-right: -30px;
+  border-radius: 5px;
+  paddling-bottom: -2px;
+  font-weight: bold;
+
+}
+
+.kyabe{
+  background-color: darkblue;
+  margin-left: -40px;
+  margin-right: -40px;
+  
+}
+
+.imgyes{
+  filter: brightness(0.7) invert(1.0) sepia(.9) hue-rotate(160deg) saturate(200%);
+}
+
+.ok{
+  color: white;
+  font-weight: bold;
+  font-size: 20px;
+}
+
+
+</style>
+
+<!-- Header -->
+
+    <div class="kyabe margin_style d-flex flex-column flex-md-row align-items-center pb-3 mb-4 border-bottom">
+      <div style="margin-bottom: -5;">
+        
+        <a href="https://bit-bangalore.edu.in/">
+          <img style="margin-left: 60px" class="imgyes img-fluid text-left mt-2" src="{% static 'bit_logo.png' %}" alt="BIT" width="55" height="75">
+        </a>
+        
+      </div>
+  
+        <span class="fs-4 margin-right" >
+        	{% if request.user.is_authenticated %}
+        <p class="pt-2 hello">Hello, {{request.user.username}}</p>
+        	{% endif %}
+        </span>
+        <div class="search-bar mt-sm-2 mr-2">
+          <form method="get">
+            <input type="text" class="form-control" name="q" id="id_q" placeholder="Search...">
+            
+          </form>
+          
+        </div>
+      
+      
+      <nav class="d-inline-flex mt-2 mt-md-0 ms-md-auto" style="margin-right: 60px;">
+      	{% if request.user.is_authenticated %}
+      		<a class="ok top-bar py-2 me-3 text-decoration-none" href="{% url 'home' %}">Home</a>
+			<a class="ok top-bar py-2 me-3 text-decoration-none" href="{% url 'account' %}">Account</a>
+			<a class="ok top-bar py-2 me-3 text-decoration-none" href="{% url 'logout' %}">Logout</a> 
+		
+		{% else %}
+			<a class="ok top-bar py-2 me-3 text-decoration-none" href="{% url 'home' %}">Home</a>
+			<a class="ok top-bar py-2 me-3 text-decoration-none" href="{% url 'login' %}">Login</a>
+		    <a class="ok top-bar py-2 me-3 text-decoration-none btn btn-outline-success" href="{% url 'register' %}">Register</a>
+		    
+
+        {% endif %}
+        
+      </nav>
+    </div>
+
+    <script type="text/javascript">
+      document.getElementByID("id_q").value="{{query}}"
+    </script>
+
+    <div style="margin-top: -22px;"class="p-3 pb-md-4 mx-auto text-center footer bg-white border-top shadow-lg">
+  <div class="d-flex flex-column pb-3">
+    <div class="inline-block">
+      <img style="float:left" src="{% static 'three_left.png' %}" width="300" height="100">
+
+      
+      <img style="float:center" src="{% static 'new_logo.png' %}" width="130" height="100" alt="Bird">
+      
+
+      <img style="float:right" src="{% static 'three_right.png' %}" width="300" height="100" class="imageimage">
+    </div><h1 class="mt-2 font_style">Bird Blogs</h1>
+  </div>
+      <h2 class=" fw-normal statement brdr">Ideas, Inspirations and Innovations...</h2>
+ </div>
+
+  <!-- Header -->
+
+
+
+
